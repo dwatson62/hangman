@@ -1,5 +1,3 @@
-require './lib/letter'
-
 describe Letter do
   let(:value) { 'a' }
   let(:letter) { Letter.new(value) }

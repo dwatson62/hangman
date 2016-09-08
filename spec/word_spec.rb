@@ -1,6 +1,3 @@
-require './lib/word'
-require 'byebug'
-
 describe Word do
   let(:word) { Word.new }
 
