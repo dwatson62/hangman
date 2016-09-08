@@ -4,8 +4,8 @@ require 'letter'
 class Word
   attr_reader :letters, :value
 
-  def initialize
-    @value = 1.words.join
+  def initialize(word = nil)
+    @value = word || 1.words.join
     @letters = @value.chars.map { |letter| Letter.new(letter) }
   end
 
