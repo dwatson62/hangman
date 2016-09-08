@@ -15,6 +15,11 @@ describe Game do
       game.guess_a_letter('z')
       expect(game.word.display).to eq '______'
     end
+
+    it 'can solve multiple letters at once' do
+      game.guess_a_letter('o')
+      expect(game.word.display).to eq '_oo___'
+    end
   end
 end
 

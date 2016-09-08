@@ -9,13 +9,22 @@ class Game
   end
 
   def guess_a_letter(guess)
+    correct = false
     word.letters.each do |letter|
       if letter.value == guess
-        puts 'Correct!'
-        return letter.solve
+        letter.solve
+        correct = true
       end
     end
-    puts 'Better luck next time'
+    update_message(correct)
+  end
+
+  def update_message(correct)
+    if correct
+      puts 'Correct!'
+    else
+      puts 'Better luck next time'
+    end
   end
 
   def ask_for_input
