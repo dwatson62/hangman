@@ -10,6 +10,10 @@ class Word
   end
 
   def display
-    @letters.map(&:display).join
+    letters.map(&:display).join
+  end
+
+  def solved?
+    letters.all?(&:solved?)
   end
 end

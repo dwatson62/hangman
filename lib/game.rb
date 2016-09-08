@@ -14,4 +14,12 @@ class Game
     end
     puts 'Better luck next time'
   end
+
+  def word_solved?
+    word.solved?
+  end
+
+  def end_game
+    puts 'You win' if word_solved?
+  end
 end
