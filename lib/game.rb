@@ -54,6 +54,6 @@ class Game
   end
 
   def valid_input?(guess)
-    guess =~ /[a-z]/
+    guess =~ /[a-z]/ && guess.length == 1
   end
 end

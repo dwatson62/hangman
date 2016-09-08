@@ -11,6 +11,11 @@ describe Game do
       game.guess_a_letter(';')
     end
 
+    it 'can only guess one letter at a time' do
+      expect(game).to receive(:bad_message)
+      game.guess_a_letter('fo')
+    end
+
     it 'solves a letter if guessed correcty' do
       game.guess_a_letter('f')
       expect(game.word.display).to eq 'f_____'
