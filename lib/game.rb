@@ -1,6 +1,3 @@
-require './lib/word'
-require 'byebug'
-
 class Game
   attr_reader :word
 
@@ -9,6 +6,8 @@ class Game
   end
 
   def guess_a_letter(guess)
+    guess.downcase!
+    return bad_message unless valid_input?(guess)
     correct = false
     word.letters.each do |letter|
       if letter.value == guess
@@ -17,14 +16,6 @@ class Game
       end
     end
     update_message(correct)
-  end
-
-  def update_message(correct)
-    if correct
-      puts 'Correct!'
-    else
-      puts 'Better luck next time'
-    end
   end
 
   def ask_for_input
@@ -43,5 +34,21 @@ class Game
 
   def end_game
     puts 'You win' if word_solved?
+  end
+
+  private
+
+  def update_message(correct)
+    return puts 'Correct!' if correct
+    puts 'Better luck next time'
+  end
+
+  def bad_message
+    print "\n"
+    puts 'Please enter an actual letter'
+  end
+
+  def valid_input?(guess)
+    guess =~ /[a-z]/
   end
 end

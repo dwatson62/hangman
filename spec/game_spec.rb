@@ -6,6 +6,11 @@ describe Game do
       allow(game).to receive(:word).and_return(Word.new('foobar'))
     end
 
+    it 'letter must be an actual letter' do
+      expect(game).to receive(:bad_message)
+      game.guess_a_letter(';')
+    end
+
     it 'solves a letter if guessed correcty' do
       game.guess_a_letter('f')
       expect(game.word.display).to eq 'f_____'
