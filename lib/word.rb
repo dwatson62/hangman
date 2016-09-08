@@ -1,5 +1,4 @@
 require 'word_salad'
-require 'letter'
 
 class Word
   attr_reader :letters, :value
