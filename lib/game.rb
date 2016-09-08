@@ -1,8 +1,9 @@
 class Game
-  attr_reader :word
+  attr_reader :player, :word
 
   def initialize
     @word = Word.new
+    @player = Player.new
   end
 
   def guess_a_letter(guess)
@@ -15,7 +16,7 @@ class Game
         correct = true
       end
     end
-    update_message(correct)
+    update_score(correct, guess)
   end
 
   def ask_for_input
@@ -38,9 +39,13 @@ class Game
 
   private
 
-  def update_message(correct)
-    return puts 'Correct!' if correct
-    puts 'Better luck next time'
+  def update_score(correct, guess)
+    if correct
+      puts 'Correct!'
+    else
+      puts 'Better luck next time'
+    end
+    player.update_history(guess)
   end
 
   def bad_message
