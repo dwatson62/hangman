@@ -9,7 +9,7 @@ class Word
   end
 
   def display
-    letters.map(&:display).join
+    letters.map { |letter| "#{letter.display} " }.join
   end
 
   def solved?
