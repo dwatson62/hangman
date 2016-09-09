@@ -1,13 +1,8 @@
 class Man
-  LEVELS = { '1': :one, '2': :two, '3': :three, '4': :four,
-    '5': :five, '6': :six, '7': :seven, '8': :eight,
-    '9': :nine, '10': :ten
-   }
-
   attr_reader :level
 
   def initialize
-    @level = 1
+    @level = 0
   end
 
   def update
@@ -15,17 +10,26 @@ class Man
   end
 
   def display
-    puts send(LEVELS.fetch(:"#{level.to_s}"))
+    puts stages[level]
+  end
+
+  def stages
+    [zero, one, two, three, four, five, six, seven, eight, nine, ten]
   end
 
   def dead?
-    level == 10
+    level == stages.length - 1
   end
 
   private
 
+  def zero
+  end
+
   def one
-    '|'
+    """
+    |
+    """
   end
 
   def two
